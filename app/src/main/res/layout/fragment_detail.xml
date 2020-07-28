@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="model"
+            type="siapasaya.test.sehatq.model.ModelData.ProductPromo" />
+    </data>
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                app:sourceOriginal="@{model.imageUrl}"
+                android:scaleType="centerInside"
+                tools:src="@tools:sample/backgrounds/scenic"
+                android:id="@+id/image"
+                android:layout_margin="24dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_width="0dp"
+                android:layout_height="200dp"/>
+
+            <ImageView
+                android:id="@+id/abc_action_back"
+                android:padding="8dp"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toTopOf="@id/image"
+                app:layout_constraintStart_toStartOf="@id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                android:id="@+id/abc_action_share"
+                android:padding="8dp"
+                android:src="@drawable/ic_baseline_share_24"
+                android:layout_margin="8dp"
+                app:layout_constraintTop_toTopOf="@id/image"
+                app:layout_constraintEnd_toEndOf="@id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_marginTop="16dp"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@id/image"
+                app:layout_constraintTop_toBottomOf="@id/image"
+                android:textColor="@android:color/black"
+                tools:text="Sample Title"
+                android:text="@{model.title}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <ImageView
+                app:layout_constraintEnd_toEndOf="@id/image"
+                app:layout_constraintTop_toTopOf="@id/title"
+                app:layout_constraintBottom_toBottomOf="@id/title"
+                android:src="@{model.loved == 0 ? @drawable/ic_baseline_favorite_border_24 : @drawable/ic_round_favorite}"
+                android:id="@+id/action_favorite"
+                android:layout_width="32dp"
+                android:layout_height="32dp"/>
+            <TextView
+                android:text="@{model.description}"
+                app:layout_constraintEnd_toEndOf="@id/action_favorite"
+                app:layout_constraintStart_toStartOf="@id/title"
+                app:layout_constraintTop_toBottomOf="@id/title"
+                android:layout_marginTop="16dp"
+                android:id="@+id/deskripsi"
+                tools:text="The Nintendo DS (abbreviated NDS, DS, or the full name Nintendo Dual Screen, and iQue DS in China) is a handheld game console developed and manufactured by Nintendo, released in 2004. It is visibly distinguishable by its horizontal clamshell design, and the presence of two displays, the lower of which acts as a touchscreen. The system also has a built-in microphone and supports wireless IEEE 802.11 (Wi-Fi) standards, allowing players to interact with each other within short range (10–30 meters, depending on conditions) or over the Nintendo Wi-Fi Connection service via a standard Wi-Fi access point. According to Nintendo, the letters DS in the name stand for Developers' System and Double Screen, the former of which refers to the features of the handheld designed to encourage innovative gameplay ideas among developers.[43] The system was known as Project Nitro during development."
+                android:layout_width="0dp"
+                android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:text="buy"
+                android:textColor="@android:color/white"
+                android:id="@+id/action_buy"
+                android:background="@drawable/abc_background_button_sign_in"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/deskripsi"
+                app:layout_constraintEnd_toEndOf="@id/image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_marginEnd="24dp"
+                app:layout_constraintEnd_toStartOf="@id/action_buy"
+                app:layout_constraintBottom_toBottomOf="@id/action_buy"
+                app:layout_constraintTop_toTopOf="@id/action_buy"
+                android:text="@{model.price}"
+                tools:text="$400"
+                android:textSize="18sp"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</layout>

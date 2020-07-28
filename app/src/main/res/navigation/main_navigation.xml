@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/FragmentSIGNIN">
+
+    <fragment
+        android:id="@+id/FragmentSIGNIN"
+        android:name="siapasaya.test.sehatq.view.signin.FragmentSignIn"
+        android:label="FragmentSignIn"
+        tools:layout="@layout/fragment_sign_in">
+
+        <action
+            android:id="@+id/action_FragmentSIGNIN_to_FragmentMAIN"
+            app:destination="@id/FragmentMAIN"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/FragmentMAIN"
+        android:name="siapasaya.test.sehatq.view.main.FragmentMain"
+        android:label="FragmentMain"
+        tools:layout="@layout/fragment_main">
+
+        <action
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            android:id="@+id/action_FragmentMAIN_to_FragmentSEARCH"
+            app:destination="@id/FragmentSEARCH" />
+        <action
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            android:id="@+id/action_FragmentMAIN_to_fragmentDetail"
+            app:destination="@id/fragmentDetail" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_search"
+        android:id="@+id/FragmentSEARCH"
+        android:name="siapasaya.test.sehatq.view.search.FragmentPencarian"
+        android:label="FragmentPencarian" >
+        <action
+            android:id="@+id/action_FragmentSEARCH_to_fragmentDetail"
+            app:destination="@id/fragmentDetail"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit">
+        </action>
+    </fragment>
+    <fragment
+        tools:layout="@layout/fragment_detail"
+        android:id="@+id/fragmentDetail"
+        android:name="siapasaya.test.sehatq.view.detail.FragmentDetail"
+        android:label="FragmentDetail" >
+        <action
+            android:id="@+id/action_fragmentDetail_to_FragmentSEARCH"
+            app:popUpTo="@id/FragmentSEARCH"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"/>
+        <argument
+            android:name="id"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+        <argument
+            android:name="fragment"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="null" />
+        <action
+            android:id="@+id/action_fragmentDetail_to_FragmentMAIN"
+            app:popUpTo="@id/FragmentMAIN"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit">
+        </action>
+    </fragment>
+    <action
+        app:enterAnim="@anim/fragment_open_enter"
+        app:exitAnim="@anim/fragment_open_exit"
+        app:popUpTo="@id/FragmentMAIN"
+        app:popUpToInclusive="true"
+        android:id="@+id/action_global_FragmentMAIN"
+        app:destination="@id/FragmentMAIN" />
+</navigation>
